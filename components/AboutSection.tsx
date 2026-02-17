@@ -38,7 +38,7 @@ export default function AboutSection() {
                  {/* Placeholder for a mission-related image */}
                  <div className="absolute inset-0 bg-linear-to-tr from-goka-dark/20 to-transparent" />
                  <Image 
-                   src="/gfknew.jpeg" 
+                   src="/delivery-man.jpg"
                    alt="About GokaFood" 
                    fill 
                    className="object-cover opacity-80"

@@ -4,26 +4,46 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/gfknew.jpeg" alt="GKF" width={40} height={40} className="rounded-lg" />
-          <span className="font-black text-2xl text-goka-dark tracking-tighter uppercase">GokaFood</span>
+    // Fixed z-index using arbitrary value z-[100]
+    <header className="fixed top-0 left-0 w-full z-100 bg-black/95 backdrop-blur-2xl border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
+        {/* Brand */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden border-2 border-goka-orange">
+            <Image 
+              src="/gfknew.jpeg" 
+              alt="GKF Logo" 
+              fill 
+              className="object-cover" 
+            />
+          </div>
+          <span className="font-black text-2xl text-white tracking-tighter uppercase">
+            Goka<span className="text-goka-orange">Food</span>
+          </span>
         </Link>
 
-        {/* Desktop Links - Now includes About Us */}
-        <div className="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-goka-dark/70">
-          <Link href="/" className="hover:text-goka-orange">Home</Link>
-          <Link href="#about" className="hover:text-goka-orange transition-colors">About Us</Link>
-          <Link href="#menu" className="hover:text-goka-orange transition-colors">Menu</Link>
-          <Link href="#franchise" className="hover:text-goka-orange transition-colors">Franchise</Link>
-          <Link href="#ambassador" className="hover:text-goka-orange transition-colors">Ambassadors</Link>
-        </div>
+        {/* Desktop Navigation - Added Contact Us */}
+        <nav className="hidden lg:flex items-center gap-10">
+          {["Home", "About Us", "Menu", "Franchise", "Ambassadors", "Contact"].map((item) => (
+            <Link 
+              key={item}
+              // Improved href logic to handle spaces and IDs correctly
+              href={item === "Home" ? "/" : `#${item.toLowerCase().replace(/\s+/g, '')}`}
+              className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/80 hover:text-goka-orange transition-all"
+            >
+              {item}
+            </Link>
+          ))}
+        </nav>
 
-        <button className="bg-goka-orange text-white px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform active:scale-95">
-          Get the App
-        </button>
+        {/* Action Button */}
+        <div className="flex items-center gap-4">
+          <button className="bg-goka-orange text-white px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:scale-105 active:scale-95 transition-all">
+            Get App
+          </button>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 }
