@@ -12,15 +12,13 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-10 h-10 rounded-xl overflow-hidden border-2 border-goka-orange">
             <Image 
-              src="/gfknew.jpeg" 
+              src="/gfknew.png" 
               alt="GKF Logo" 
               fill 
               className="object-cover" 
             />
           </div>
-          <span className="font-black text-2xl text-white tracking-tighter uppercase">
-            Goka<span className="text-goka-orange">Food</span>
-          </span>
+          
         </Link>
 
         {/* Desktop Navigation - Added Contact Us */}
